@@ -13,3 +13,4 @@ FROM courses;
 SELECT enrollments.id, courses.title, enrollments.check_enrollment_date
 FROM enrollments
 JOIN courses ON enrollments.course_id = courses.id;
+
