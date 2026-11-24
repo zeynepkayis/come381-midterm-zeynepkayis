@@ -38,4 +38,39 @@ ORDER BY order_count DESC, c.full_name ASC;
 SELECT category, ROUND(AVG(price), 2) AS avg_price 
 FROM product
 GROUP BY category
-ORDER BY category; 
+ORDER BY category; -- NULL Deneyi 1: IS NULL ve IS NOT NULL kontrolu
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department IS NULL
+ORDER BY customer_id;
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department IS NOT NULL
+ORDER BY full_name ASC;
+-- NULL Deneyi 2: COUNT(*) vs COUNT(sutun) ve (= NULL) karsilastirmasi
+SELECT
+    COUNT(*) AS total_customers,
+    COUNT(department) AS customers_with_department,
+    COUNT(*) - COUNT(department) AS customers_with_null_department
+FROM customer;
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department = NULL;
+-- NULL Deneyi 1: IS NULL ve IS NOT NULL kontrolu
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department IS NULL
+ORDER BY customer_id;
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department IS NOT NULL
+ORDER BY full_name ASC;
+-- NULL Deneyi 2: COUNT(*) vs COUNT(sutun) ve (= NULL) karsilastirmasi
+SELECT
+    COUNT(*) AS total_customers,
+    COUNT(department) AS customers_with_department,
+    COUNT(*) - COUNT(department) AS customers_with_null_department
+FROM customer;
+SELECT customer_id, full_name, department
+FROM customer
+WHERE department = NULL;
